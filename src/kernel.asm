@@ -1,7 +1,10 @@
 [BITS 32]
+global _start
+
 CODE_SEG equ 0x08
 DATA_SEG equ 0x10
-load32:
+
+_start:
     mov ax, DATA_SEG
     mov ds, ax
     mov es, ax
@@ -17,3 +20,5 @@ load32:
     out 0x92, al
 
     jmp $
+
+times 512-($ - $$) db 0
